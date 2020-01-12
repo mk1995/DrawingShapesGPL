@@ -90,6 +90,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DrawingFactory.cs" />
+    <Compile Include="DrawingShapesException.cs" />
     <Compile Include="DrawTriangle.cs">
       <SubType>Form</SubType>
     </Compile>
