@@ -87,31 +87,86 @@ namespace DrawingShapesGPL
                     words[i] = words[i].Trim();
                 }
                 String firstWord = words[0].ToLower();
-                string[] words2 = singleLineCommand.Split('=');
-                for (int j = 0; j < words2.Length; j++)
+                if (firstWord.Equals("if"))
+                {
+                    Boolean loop = false;
+                    if (words[1].ToLower().Equals("radius"))
+                    {
+                        if (radius == int.Parse(words[3]))
+                        {
+                            loop = true;
+                        }
+                    }
+                    else if (words[1].ToLower().Equals("width"))
+                    {
+                        if (width == int.Parse(words[3]))
+                        {
+                            loop = true;
+                        }
+                    }
+                    else if (words[1].ToLower().Equals("height"))
+                    {
+                        if (height == int.Parse(words[3]))
+                        {
+                            loop = true;
+                        }
+
+                    }
+                    else if (words[1].ToLower().Equals("counter"))
+                    {
+                        if (counter == int.Parse(words[3]))
+                        {
+                            loop = true;
+                        }
+                    }
+                    int ifStartLine = (GetStartLineNumber("if"));
+                    int ifEndLine = (GetEndLineNumber("endif") - 1);
+                    loopNumber = ifEndLine;
+                    if (loop)
+                    {
+                        for (int j = ifStartLine; j <= ifEndLine; j++)
+                        {
+                            string oneLineCommand1 = textBoxCmd.Lines[j];
+                            oneLineCommand1 = oneLineCommand1.Trim();
+                            if (!oneLineCommand1.Equals(""))
+                            {
+                                RunCommand(oneLineCommand1);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("If Statement is false");
+                    }
+                }
+                else
+                {
+                    string[] words2 = singleLineCommand.Split('=');
+                    for (int j = 0; j < words2.Length; j++)
                     {
                         words2[j] = words2[j].Trim();
                     }
-                if (words2[0].ToLower().Equals("radius"))
+                    if (words2[0].ToLower().Equals("radius"))
                     {
                         radius = int.Parse(words2[1]);
                     }
-                else if (words2[0].ToLower().Equals("width"))
+                    else if (words2[0].ToLower().Equals("width"))
                     {
                         width = int.Parse(words2[1]);
                     }
-                else if (words2[0].ToLower().Equals("height"))
+                    else if (words2[0].ToLower().Equals("height"))
                     {
                         height = int.Parse(words2[1]);
                     }
-                else if (words2[0].ToLower().Equals("counter"))
+                    else if (words2[0].ToLower().Equals("counter"))
                     {
                         counter = int.Parse(words2[1]);
                     }
-                else if (words2[0].ToLower().Equals("hypotenuse"))
+                    else if (words2[0].ToLower().Equals("hypotenuse"))
                     {
                         hypotenuse = int.Parse(words2[1]);
                     }
+                }
             }
             else
             {
