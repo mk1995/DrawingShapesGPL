@@ -136,6 +136,7 @@
             this.textBoxCmd.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxCmd.Size = new System.Drawing.Size(188, 256);
             this.textBoxCmd.TabIndex = 1;
+            this.textBoxCmd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCmd_KeyDown);
             // 
             // splitter1
             // 

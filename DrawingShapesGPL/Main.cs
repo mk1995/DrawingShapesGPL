@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DrawingShapesGPL
@@ -95,11 +96,6 @@ namespace DrawingShapesGPL
         /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panelDraw_MouseMove(object sender, MouseEventArgs e)
         {
-            /*if (!hasDrawOrMoved)
-            {
-                mouseX = e.X;
-                mouseY = e.Y;
-            }*/
             if (moving && x != -1 && y != -1)
             {
                 g.DrawLine(p, new Point(x, y), e.Location);
@@ -126,5 +122,26 @@ namespace DrawingShapesGPL
             panelDraw.Refresh();
         }
 
+        /// <summary>Handles the KeyDown event of the textBoxCmd control. When "ENTER" key is pressed, it validates run command and execute btnRun Click event.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
+        private void textBoxCmd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Return)
+            {
+                string[] cmds = textBoxCmd.Text.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None);
+                Array.Sort(cmds);
+                for (int i = 0; i < cmds.Length; i++)
+                {
+                    cmds[i].ToLower().Trim();   
+                }                
+                Boolean runExists = cmds.Contains("run");
+                if (runExists)
+                {
+                    btn_Run.PerformClick();
+                }
+
+            }
+        }
     }
 }

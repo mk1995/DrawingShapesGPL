@@ -104,7 +104,7 @@ namespace DrawingShapesGPL
         /// <param name="cmd">String Single line command</param>
         public void CheckCmdLineValidation(string cmd)
         {
-            String[] syntaxs = { "drawto", "moveto", "loop", "endloop", "if", "endif"};
+            String[] syntaxs = { "drawto", "moveto", "loop", "endloop", "if", "endif", "run"};
             String[] shapes = { "circle", "rectangle", "triangle" };
             String[] variables = { "radius", "width", "height", "counter", "hypotenuse"};
             cmd = Regex.Replace(cmd, @"\s+", " ");
@@ -195,6 +195,13 @@ namespace DrawingShapesGPL
 
                 }
                 else if (firstWord.Equals("endif"))
+                {
+                    if (commandsAfterSpliting.Length != 1)
+                    {
+                        isCmdValid = false;
+                    }
+                }
+                else if (firstWord.Equals("run"))
                 {
                     if (commandsAfterSpliting.Length != 1)
                     {
