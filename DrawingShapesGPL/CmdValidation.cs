@@ -23,43 +23,93 @@ namespace DrawingShapesGPL
         /// isCmdValid member of CmdValidation class which indicates
         /// whether the command line is "TRUE" or "FASLE"
         /// </summary>
-        public Boolean isCmdValid = true;
+        private Boolean isCmdValid = true;
+        /// <summary>Gets or sets a value indicating whether this instance is command valid.</summary>
+        /// <value>
+        ///   <c>true</c> if this instance is command valid; otherwise, <c>false</c>.</value>
+        public bool IsCmdValid { get => isCmdValid; set => isCmdValid = value; }
+        
+        private Boolean isSyntaxValid = true;
+        public bool IsSyntaxValid { get => isSyntaxValid; set => isSyntaxValid = value; }
+        
+        private Boolean isParameterValid = true;
+        public bool IsParameterValid { get => isParameterValid; set => isParameterValid = value; }
 
         /// <summary>
         /// isSomethingInvalid member of CmdValidation class which indicates
         /// whether something exceptional is occured in command line or not.
         /// </summary>
-        public Boolean isSomethingInvalid = false;
+        private Boolean isSomethingInvalid = false;
 
         /// <summary>
         /// lineNumber: indicates line number of the command in the multi-textline control.
         /// </summary>
-        public int lineNumber = 0;
+        private int lineNumber = 0;
 
         /// <summary>
         /// doesCmdHasLoop: indicates whether command has "LOOP" keyword in the multi-textline control.
         /// </summary>
-        public Boolean doesCmdHasLoop = false;
+        private Boolean doesCmdHasLoop = false;
 
         /// <summary>
         /// doesCmdHasEndLoop: indicates whether command has "ENDLOOP" keyword in the multi-textline control.
         /// </summary>
-        public Boolean doesCmdHasEndLoop = false;
+        private Boolean doesCmdHasEndLoop = false;
 
         /// <summary>
         /// doesCmdHasIf: indicates whether command has "IF" keyword in the multi-textline control.
         /// </summary>
-        public Boolean doesCmdHasIf = false;
+        private Boolean doesCmdHasIf = false;
 
         /// <summary>
         /// doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
         /// </summary>
-        public Boolean doesCmdHasEndif = false;
+        private Boolean doesCmdHasEndif = false;
 
         /// <summary>
         /// doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
         /// </summary>
-        public int loopLineNo = 0, endLoopLineNo = 0, ifLineNo = 0, endIfLineNo = 0;
+        private int endIfLineNo = 0;
+        private int loopLineNo;
+        private int endLoopLineNo;
+        private int ifLineNo;
+
+
+        /// <summary>Gets or sets a value indicating whether this instance is something invalid.</summary>
+        /// <value>
+        ///   <c>true</c> if this instance is something invalid; otherwise, <c>false</c>.</value>
+        public bool IsSomethingInvalid { get => isSomethingInvalid; set => isSomethingInvalid = value; }
+        /// <summary>Gets or sets the line number.</summary>
+        /// <value>The line number.</value>
+        public int LineNumber { get => lineNumber; set => lineNumber = value; }
+        /// <summary>Gets or sets a value indicating whether [does command has loop].</summary>
+        /// <value>
+        ///   <c>true</c> if [does command has loop]; otherwise, <c>false</c>.</value>
+        public bool DoesCmdHasLoop { get => doesCmdHasLoop; set => doesCmdHasLoop = value; }
+        /// <summary>Gets or sets a value indicating whether [does command has end loop].</summary>
+        /// <value>
+        ///   <c>true</c> if [does command has end loop]; otherwise, <c>false</c>.</value>
+        public bool DoesCmdHasEndLoop { get => doesCmdHasEndLoop; set => doesCmdHasEndLoop = value; }
+        /// <summary>Gets or sets a value indicating whether [does command has if].</summary>
+        /// <value>
+        ///   <c>true</c> if [does command has if]; otherwise, <c>false</c>.</value>
+        public bool DoesCmdHasIf { get => doesCmdHasIf; set => doesCmdHasIf = value; }
+        /// <summary>Gets or sets a value indicating whether [does command has endif].</summary>
+        /// <value>
+        ///   <c>true</c> if [does command has endif]; otherwise, <c>false</c>.</value>
+        public bool DoesCmdHasEndif { get => doesCmdHasEndif; set => doesCmdHasEndif = value; }
+        /// <summary>Gets or sets the loop line no.</summary>
+        /// <value>The loop line no.</value>
+        public int LoopLineNo { get => loopLineNo; set => loopLineNo = value; }
+        /// <summary>Gets or sets the end loop line no.</summary>
+        /// <value>The end loop line no.</value>
+        public int EndLoopLineNo { get => endLoopLineNo; set => endLoopLineNo = value; }
+        /// <summary>Gets or sets if line no.</summary>
+        /// <value>If line no.</value>
+        public int IfLineNo { get => ifLineNo; set => ifLineNo = value; }
+        /// <summary>Gets or sets the end if line no.</summary>
+        /// <value>The end if line no.</value>
+        public int EndIfLineNo { get => endIfLineNo; set => endIfLineNo = value; }
 
         /// <summary>
         /// CmdValidation(TextBox textBoxCmd): If text box is empty isCmdValid = "false"
@@ -70,7 +120,7 @@ namespace DrawingShapesGPL
         {
             this.textBoxCmd = textBoxCmd;
             int numberOfCmdLines = textBoxCmd.Lines.Length;
-            if (numberOfCmdLines == 0) { isCmdValid = false; }
+            if (numberOfCmdLines == 0) { IsCmdValid = false; }
             else
             {
                 for (int i = 0; i < numberOfCmdLines; i++)
@@ -80,11 +130,13 @@ namespace DrawingShapesGPL
                     if (!singleLineCmd.Equals(""))
                     {
                         CheckCmdLineValidation(singleLineCmd);
-                        lineNumber = (i + 1);
-                        if (!isCmdValid)
+                        LineNumber = (i + 1);
+                        if (!IsCmdValid)
                         {
-                            MessageBox.Show("Command Validation error at: " + lineNumber);
-                            isSomethingInvalid = true;
+                            if (!IsParameterValid) { MessageBox.Show("Paramter errors at: " + LineNumber); }
+                            else if (!IsSyntaxValid) { MessageBox.Show("Syntax errors at: " + LineNumber); }
+                            else { MessageBox.Show("Validation error at: " + LineNumber); }
+                            IsSomethingInvalid = true;
                         }
                         else
                         {
@@ -131,13 +183,13 @@ namespace DrawingShapesGPL
                         {
                             if (!parms[i].Trim().All(char.IsDigit))
                             {
-                                isCmdValid = false;
+                                IsCmdValid = false;
                             }
                         }
                     }
                     else
                     {
-                        isCmdValid = false;
+                        IsCmdValid = false;
                     }
                 }
                 else if (firstWord.Equals("loop"))
@@ -146,12 +198,12 @@ namespace DrawingShapesGPL
                     {
                         if (!commandsAfterSpliting[1].Trim().All(char.IsDigit))
                         {
-                            isCmdValid = false;
+                            IsCmdValid = false;
                         }
                     }
                     else
                     {
-                        isCmdValid = false;
+                        IsCmdValid = false;
                     }
                 }
                 else if (firstWord.Equals("endloop"))
@@ -160,12 +212,12 @@ namespace DrawingShapesGPL
                     {
                         if (!commandsAfterSpliting[0].Equals("endloop"))
                         {
-                            isCmdValid = false;
+                            IsCmdValid = false;
                         }
                     }
                     else
                     {
-                        isCmdValid = false;
+                        IsCmdValid = false;
                     }
                 }//endif
                 else if (firstWord.Equals("if"))//if radius = x then
@@ -180,32 +232,32 @@ namespace DrawingShapesGPL
                                 {
                                     if (!commandsAfterSpliting[4].ToLower().Equals("then"))
                                     {
-                                        isCmdValid = false;
+                                        IsCmdValid = false;
                                     }
                                 }
-                                else { isCmdValid = false; }
+                                else { IsCmdValid = false; }
 
                             }
-                            else { isCmdValid = false; }
+                            else { IsCmdValid = false; }
                         }
-                        else { isCmdValid = false; }
+                        else { IsCmdValid = false; }
 
                     }
-                    else { isCmdValid = false; }
+                    else { IsCmdValid = false; }
 
                 }
                 else if (firstWord.Equals("endif"))
                 {
                     if (commandsAfterSpliting.Length != 1)
                     {
-                        isCmdValid = false;
+                        IsCmdValid = false;
                     }
                 }
                 else if (firstWord.Equals("run"))
                 {
                     if (commandsAfterSpliting.Length != 1)
                     {
-                        isCmdValid = false;
+                        IsCmdValid = false;
                     }
                 }
 
@@ -220,11 +272,11 @@ namespace DrawingShapesGPL
                         else if (commandsAfterSpliting[1].Trim().All(char.IsLetter))
                         {
                             if (variables.Contains(commandsAfterSpliting[1].ToLower())) { }
-                            else { isCmdValid = false; }
+                            else { IsCmdValid = false; IsParameterValid = false; }
                         }
-                        else { isCmdValid = false; }
+                        else { IsCmdValid = false; IsParameterValid = false; }
                     }
-                    else { isCmdValid = false; }
+                    else { IsCmdValid = false; IsParameterValid = false; }
                 }
                 else if (firstWord.ToLower().Equals("rectangle"))
                 {
@@ -240,13 +292,13 @@ namespace DrawingShapesGPL
                             else if (parms[i].All(char.IsLetter))
                             {
                                 if (variables.Contains(parms[i].ToLower())) { }
-                                else { isCmdValid = false; }
+                                else { IsCmdValid = false; IsParameterValid = false; }
                             }
-                            else { isCmdValid = false; }
+                            else { IsCmdValid = false; IsParameterValid = false; }
 
                         }
                     }
-                    else { isCmdValid = false; }
+                    else { IsCmdValid = false; IsParameterValid = false; }
                 }
                 else if (firstWord.ToLower().Equals("triangle"))
                 {
@@ -258,13 +310,16 @@ namespace DrawingShapesGPL
                         for (int i = 0; i < parms.Length; i++)
                         {
                             parms[i] = parms[i].Trim();
-                            if (!parms[i].All(char.IsDigit))
+                            if (parms[i].All(char.IsDigit)) { }
+                            else if (parms[i].All(char.IsLetter))
                             {
-                                isCmdValid = false;
+                                if (variables.Contains(parms[i].ToLower())) { }
+                                else { IsCmdValid = false; IsParameterValid = false; }
                             }
+                            else { IsCmdValid = false; IsParameterValid = false; }
                         }
                     }
-                    else { isCmdValid = false; }
+                    else { IsCmdValid = false; IsParameterValid = false; }
                 }
             }
             else if (firstWordIsVariable) // radius = 6;
@@ -273,15 +328,14 @@ namespace DrawingShapesGPL
                 {
                     if (commandsAfterSpliting[1].Equals("="))
                     {
-                        if (!commandsAfterSpliting[2].Trim().All(char.IsDigit)) { isCmdValid = false; }
-                        else { }
+                        if (!commandsAfterSpliting[2].Trim().All(char.IsDigit)) { IsCmdValid = false; IsParameterValid = false; }
                     }
-                    else { isCmdValid = false; }
+                    else { IsCmdValid = false; }
                 }
-                else { isCmdValid = false; }
+                else { IsCmdValid = false; }
             }
-            else { isCmdValid = false; }
-            if (!isCmdValid) { isSomethingInvalid = true; }
+            else { IsCmdValid = false; IsSyntaxValid = false; }
+            if (!IsCmdValid) { IsSomethingInvalid = true; }
 
         }
 
@@ -297,57 +351,57 @@ namespace DrawingShapesGPL
                 singleLineCmd = singleLineCmd.Trim();
                 if (!singleLineCmd.Equals(""))
                 {
-                    doesCmdHasLoop = Regex.IsMatch(singleLineCmd.ToLower(), "loop");
-                    if (doesCmdHasLoop)
+                    DoesCmdHasLoop = Regex.IsMatch(singleLineCmd.ToLower(), "loop");
+                    if (DoesCmdHasLoop)
                     {
-                        loopLineNo = (i + 1);
+                        LoopLineNo = (i + 1);
                     }
-                    doesCmdHasEndLoop = singleLineCmd.ToLower().Contains("endloop");
-                    if (doesCmdHasEndLoop)
+                    DoesCmdHasEndLoop = singleLineCmd.ToLower().Contains("endloop");
+                    if (DoesCmdHasEndLoop)
                     {
-                        endLoopLineNo = (i + 1);
+                        EndLoopLineNo = (i + 1);
                     }
-                    doesCmdHasIf = Regex.IsMatch(singleLineCmd.ToLower(), "if");
-                    if (doesCmdHasIf)
+                    DoesCmdHasIf = Regex.IsMatch(singleLineCmd.ToLower(), "if");
+                    if (DoesCmdHasIf)
                     {
-                        ifLineNo = (i + 1);
+                        IfLineNo = (i + 1);
                     }
-                    doesCmdHasEndif = singleLineCmd.ToLower().Contains("endif");
-                    if (doesCmdHasEndif)
+                    DoesCmdHasEndif = singleLineCmd.ToLower().Contains("endif");
+                    if (DoesCmdHasEndif)
                     {
-                        endIfLineNo = (i + 1);
+                        EndIfLineNo = (i + 1);
                     }
                 }
             }
-            if (doesCmdHasLoop)
+            if (DoesCmdHasLoop)
             {
-                if (doesCmdHasEndLoop)
+                if (DoesCmdHasEndLoop)
                 {
-                    if (loopLineNo > endLoopLineNo)
+                    if (LoopLineNo > EndLoopLineNo)
                     {
-                        isCmdValid = false;
-                        MessageBox.Show("'ENDLOOP' must be after loop start: Loop starts at" + loopLineNo + " Loop ends at: " + endLoopLineNo);
+                        IsCmdValid = false;
+                        MessageBox.Show("'ENDLOOP' must be after loop start: Loop starts at" + LoopLineNo + " Loop ends at: " + EndLoopLineNo);
                     }
                 }
                 else
                 {
-                    isCmdValid = false;
+                    IsCmdValid = false;
                     MessageBox.Show("Loop Not Ended with 'ENDLOOP'");
                 }
             }
-            if (doesCmdHasIf)
+            if (DoesCmdHasIf)
             {
-                if (doesCmdHasEndif)
+                if (DoesCmdHasEndif)
                 {
-                    if (endIfLineNo < ifLineNo)
+                    if (EndIfLineNo < IfLineNo)
                     {
-                        isCmdValid = false;
-                        MessageBox.Show("'ENDIF' must be after IF: If starts at" + ifLineNo + " and ends at: " + endIfLineNo);
+                        IsCmdValid = false;
+                        MessageBox.Show("'ENDIF' must be after IF: If starts at" + IfLineNo + " and ends at: " + EndIfLineNo);
                     }
                 }
                 else
                 {
-                    isCmdValid = false;
+                    IsCmdValid = false;
                     MessageBox.Show("IF Not Ended with 'ENDIF'");
                 }
             }

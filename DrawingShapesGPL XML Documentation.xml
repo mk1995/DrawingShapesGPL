@@ -58,6 +58,11 @@
             whether the command line is "TRUE" or "FASLE"
             </summary>
         </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.IsCmdValid">
+            <summary>Gets or sets a value indicating whether this instance is command valid.</summary>
+            <value>
+              <c>true</c> if this instance is command valid; otherwise, <c>false</c>.</value>
+        </member>
         <member name="F:DrawingShapesGPL.CmdValidation.isSomethingInvalid">
             <summary>
             isSomethingInvalid member of CmdValidation class which indicates
@@ -89,25 +94,55 @@
             doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
             </summary>
         </member>
-        <member name="F:DrawingShapesGPL.CmdValidation.loopLineNo">
-            <summary>
-            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
-            </summary>
-        </member>
-        <member name="F:DrawingShapesGPL.CmdValidation.endLoopLineNo">
-            <summary>
-            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
-            </summary>
-        </member>
-        <member name="F:DrawingShapesGPL.CmdValidation.ifLineNo">
-            <summary>
-            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
-            </summary>
-        </member>
         <member name="F:DrawingShapesGPL.CmdValidation.endIfLineNo">
             <summary>
             doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
             </summary>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.IsSomethingInvalid">
+            <summary>Gets or sets a value indicating whether this instance is something invalid.</summary>
+            <value>
+              <c>true</c> if this instance is something invalid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.LineNumber">
+            <summary>Gets or sets the line number.</summary>
+            <value>The line number.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.DoesCmdHasLoop">
+            <summary>Gets or sets a value indicating whether [does command has loop].</summary>
+            <value>
+              <c>true</c> if [does command has loop]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.DoesCmdHasEndLoop">
+            <summary>Gets or sets a value indicating whether [does command has end loop].</summary>
+            <value>
+              <c>true</c> if [does command has end loop]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.DoesCmdHasIf">
+            <summary>Gets or sets a value indicating whether [does command has if].</summary>
+            <value>
+              <c>true</c> if [does command has if]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.DoesCmdHasEndif">
+            <summary>Gets or sets a value indicating whether [does command has endif].</summary>
+            <value>
+              <c>true</c> if [does command has endif]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.LoopLineNo">
+            <summary>Gets or sets the loop line no.</summary>
+            <value>The loop line no.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.EndLoopLineNo">
+            <summary>Gets or sets the end loop line no.</summary>
+            <value>The end loop line no.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.IfLineNo">
+            <summary>Gets or sets if line no.</summary>
+            <value>If line no.</value>
+        </member>
+        <member name="P:DrawingShapesGPL.CmdValidation.EndIfLineNo">
+            <summary>Gets or sets the end if line no.</summary>
+            <value>The end if line no.</value>
         </member>
         <member name="M:DrawingShapesGPL.CmdValidation.#ctor(System.Windows.Forms.TextBox)">
             <summary>
@@ -243,6 +278,11 @@
             <summary>Handles the Click event of the btn_ClearPanel control.</summary>
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.textBoxCmd_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>Handles the KeyDown event of the textBoxCmd control. When "ENTER" key is pressed, it validates run command and execute btnRun Click event.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
         </member>
         <member name="F:DrawingShapesGPL.Main.components">
             <summary>

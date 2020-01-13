@@ -9,11 +9,9 @@ namespace DrawingShapesGPL
     public class DrawTriangle : CmdUtilities, IDrawShape
     {
         /// <summary>The width of triangle.</summary>
-        private int tWidth;
-        
+        private int tWidth;        
         /// <summary>The height of triangle.</summary>
-        private int tHeight;
-        
+        private int tHeight;        
         /// <summary>The hypotenuse of triangle.</summary>
         private int tHypotenuse;
 
@@ -50,7 +48,8 @@ namespace DrawingShapesGPL
             }
             else
             {
-                throw new DrawingShapesException("Triangle doesnt exist.");
+                //throw new DrawingShapesException("Triangle doesnt exist.");
+                throw new DrawingShapesException();
             }
             
         }

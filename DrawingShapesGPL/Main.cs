@@ -10,13 +10,13 @@ namespace DrawingShapesGPL
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class Main : Form
     {
-
+        #region
         public int x = -1;
         public int y = -1;
         public Boolean moving = false;
         public Graphics g;
         public Pen p;
-
+        #endregion
         /// <summary>Initializes a new instance of the <see cref="Main"/> class.</summary>
         public Main()
         {
@@ -40,11 +40,10 @@ namespace DrawingShapesGPL
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btn_Run_Click(object sender, EventArgs e)
         {
-            //hasDrawOrMoved = false;
-            if (textBoxCmd.Text != null && !textBoxCmd.Equals(""))
+           if (textBoxCmd.Text != null && !textBoxCmd.Equals(""))
             {
                 CmdValidation cmdValidateObj = new CmdValidation(textBoxCmd);
-                if (!cmdValidateObj.isSomethingInvalid)
+                if (!cmdValidateObj.IsSomethingInvalid)
                 {
                     try
                     {
@@ -56,19 +55,25 @@ namespace DrawingShapesGPL
                         textBoxResultOutput.Text += "\r\n" + exc.ToString();
                     }
                 }
+                else if(!cmdValidateObj.IsSyntaxValid)
+                {
+                    textBoxResultOutput.Text += "\r\nCommand Syntax Error.";
+                }
+                else if (!cmdValidateObj.IsParameterValid)
+                {
+                    textBoxResultOutput.Text += "\r\nParamter Error.";
+                }
                 else
                 {
-                    textBoxResultOutput.ForeColor = Color.Red;
-                    textBoxResultOutput.Text += "\r\nOOps! something went wrong try again.";
+                    textBoxResultOutput.Text += "\r\nSomething went wrong, try again.";
+
                 }
 
             }
             else
             {
-                textBoxResultOutput.ForeColor = Color.Red;
                 textBoxResultOutput.Text += "Command field must not be empty.";
             }
-            //textBoxResultOutput.Text += mouseX + " " + mouseY;
         }
 
         /// <summary>Handles the MouseUp event of the panelDraw control.</summary>

@@ -20,7 +20,7 @@ namespace UnitTestDrawingShapesGPL
             Boolean realOutcome;
 
             validation.CheckCmdLineValidation(textbox.Text);
-            realOutcome = validation.isCmdValid;
+            realOutcome = validation.IsCmdValid;
 
             Assert.AreEqual(expectedOutcome, realOutcome);
 
@@ -42,7 +42,7 @@ namespace UnitTestDrawingShapesGPL
             Boolean realOutcome;
 
             validation.CheckCmdLoopAndIfValidation();
-            realOutcome = validation.isCmdValid;
+            realOutcome = validation.IsCmdValid;
 
             Assert.AreEqual(expectedOutcome, realOutcome);
 

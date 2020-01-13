@@ -13,7 +13,7 @@ namespace DrawingShapesGPL
     public class CmdUtilities : Main
     {
         public int mouseX = 200;
-        public int mouseY = 200;
+        public int mouseY = 250;
         public Boolean hasDrawOrMoved = false;
 
         public int radius = 0;

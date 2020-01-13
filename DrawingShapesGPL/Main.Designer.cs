@@ -65,12 +65,12 @@
             // 
             this.splitContainerCmdField.Panel2.Controls.Add(this.panelDraw);
             this.splitContainerCmdField.Size = new System.Drawing.Size(1045, 517);
-            this.splitContainerCmdField.SplitterDistance = 380;
+            this.splitContainerCmdField.SplitterDistance = 411;
             this.splitContainerCmdField.TabIndex = 0;
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(295, 12);
+            this.btn_Save.Location = new System.Drawing.Point(328, 12);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(76, 35);
             this.btn_Save.TabIndex = 7;
@@ -79,7 +79,7 @@
             // 
             // btn_ClearAll
             // 
-            this.btn_ClearAll.Location = new System.Drawing.Point(203, 12);
+            this.btn_ClearAll.Location = new System.Drawing.Point(223, 12);
             this.btn_ClearAll.Name = "btn_ClearAll";
             this.btn_ClearAll.Size = new System.Drawing.Size(76, 35);
             this.btn_ClearAll.TabIndex = 6;
@@ -89,7 +89,7 @@
             // 
             // btn_ClearPanel
             // 
-            this.btn_ClearPanel.Location = new System.Drawing.Point(104, 12);
+            this.btn_ClearPanel.Location = new System.Drawing.Point(108, 12);
             this.btn_ClearPanel.Name = "btn_ClearPanel";
             this.btn_ClearPanel.Size = new System.Drawing.Size(93, 35);
             this.btn_ClearPanel.TabIndex = 5;
@@ -115,21 +115,26 @@
             this.textBoxResultOutput.Name = "textBoxResultOutput";
             this.textBoxResultOutput.ReadOnly = true;
             this.textBoxResultOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxResultOutput.Size = new System.Drawing.Size(362, 194);
+            this.textBoxResultOutput.Size = new System.Drawing.Size(399, 194);
             this.textBoxResultOutput.TabIndex = 3;
             // 
             // textBoxCmdInfo
             // 
+            this.textBoxCmdInfo.ForeColor = System.Drawing.Color.Yellow;
             this.textBoxCmdInfo.Location = new System.Drawing.Point(203, 53);
             this.textBoxCmdInfo.Multiline = true;
             this.textBoxCmdInfo.Name = "textBoxCmdInfo";
             this.textBoxCmdInfo.ReadOnly = true;
             this.textBoxCmdInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCmdInfo.Size = new System.Drawing.Size(168, 256);
+            this.textBoxCmdInfo.Size = new System.Drawing.Size(205, 256);
             this.textBoxCmdInfo.TabIndex = 2;
+            this.textBoxCmdInfo.Text = "Command Examples:\r\nmoveTo x,y\r\ndrawto x,y\r\nVariable = value\r\nrectangle width, hei" +
+    "ght\r\ncircle radius\r\ntriangle width, height, hypotenuse\r\nrun\r\n\r\n";
             // 
             // textBoxCmd
             // 
+            this.textBoxCmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCmd.ForeColor = System.Drawing.Color.Black;
             this.textBoxCmd.Location = new System.Drawing.Point(9, 53);
             this.textBoxCmd.Multiline = true;
             this.textBoxCmd.Name = "textBoxCmd";
@@ -152,7 +157,7 @@
             this.panelDraw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDraw.Location = new System.Drawing.Point(0, 0);
             this.panelDraw.Name = "panelDraw";
-            this.panelDraw.Size = new System.Drawing.Size(661, 517);
+            this.panelDraw.Size = new System.Drawing.Size(630, 517);
             this.panelDraw.TabIndex = 0;
             this.panelDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelDraw_MouseDown);
             this.panelDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDraw_MouseMove);
