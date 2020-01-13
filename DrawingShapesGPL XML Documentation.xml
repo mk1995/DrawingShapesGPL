@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DrawingShapesGPL</name>
+    </assembly>
+    <members>
+        <member name="T:DrawingShapesGPL.CmdUtilities">
+            <summary>
+              CmdUtilities Class
+            </summary>
+            <seealso cref="T:DrawingShapesGPL.Main" />
+        </member>
+        <member name="F:DrawingShapesGPL.CmdUtilities.loopNumber">
+            <summary>The loop number</summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdUtilities.shapeFactory">
+            <summary>The shape factory</summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdUtilities.IShape">
+            <summary>The i shape</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdUtilities.loadCommand(System.Windows.Forms.TextBox,System.Windows.Forms.Panel)">
+            <summary>Loads the command.</summary>
+            <param name="textBoxCmd">The text box command.</param>
+            <param name="panelDraw">The panel draw.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdUtilities.RunCommand(System.String)">
+            <summary>Runs the command.</summary>
+            <param name="singleLineCommand">The single line command.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdUtilities.sendDrawCommand(System.String)">
+            <summary>Sends the draw command.</summary>
+            <param name="lineOfCommand">The line of command.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdUtilities.GetStartLineNumber(System.String)">
+            <summary>Return the line number of command</summary>
+            <param name="syntax"></param>
+            <returns>int lineNum</returns>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdUtilities.GetEndLineNumber(System.String)">
+            <summary>Gets the end line number.</summary>
+            <param name="syntax">The syntax.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DrawingShapesGPL.CmdValidation">
+            <summary>
+            CmdValidation class helps to validate each and every text line.
+            <list type="bullet">
+            syntax: "drawto", "moveto", "loop", "endloop", "if", "endif",
+            parameters and their respective datatypes
+            variables such as radius, height, width, counter, hypotenuse
+            </list>
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.isCmdValid">
+            <summary>
+            isCmdValid member of CmdValidation class which indicates
+            whether the command line is "TRUE" or "FASLE"
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.isSomethingInvalid">
+            <summary>
+            isSomethingInvalid member of CmdValidation class which indicates
+            whether something exceptional is occured in command line or not.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.lineNumber">
+            <summary>
+            lineNumber: indicates line number of the command in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.doesCmdHasLoop">
+            <summary>
+            doesCmdHasLoop: indicates whether command has "LOOP" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.doesCmdHasEndLoop">
+            <summary>
+            doesCmdHasEndLoop: indicates whether command has "ENDLOOP" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.doesCmdHasIf">
+            <summary>
+            doesCmdHasIf: indicates whether command has "IF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.doesCmdHasEndif">
+            <summary>
+            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.loopLineNo">
+            <summary>
+            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.endLoopLineNo">
+            <summary>
+            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.ifLineNo">
+            <summary>
+            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="F:DrawingShapesGPL.CmdValidation.endIfLineNo">
+            <summary>
+            doesCmdHasEndif: indicates whether command has "ENDIF" keyword in the multi-textline control.
+            </summary>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdValidation.#ctor(System.Windows.Forms.TextBox)">
+            <summary>
+            CmdValidation(TextBox textBoxCmd): If text box is empty isCmdValid = "false"
+            else validate the each single command line using CheckCmdLineValidation(string singleLineCmd)
+            </summary>
+            <param name="textBoxCmd">Windows text box control</param>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdValidation.CheckCmdLineValidation(System.String)">
+            <summary>
+            CheckCmdLineValidation(string cmd): get single line command from TextBox Control and
+            check whether syntax, shapes, variables exist or not. If not, isValidCmd = "false" and
+            isSomethingInvalid = "true"
+            </summary>
+            <param name="cmd">String Single line command</param>
+        </member>
+        <member name="M:DrawingShapesGPL.CmdValidation.CheckCmdLoopAndIfValidation">
+            <summary>
+            Checks the command loop and if validation.
+            </summary>
+        </member>
+        <member name="T:DrawingShapesGPL.DrawCircle">
+            <summary>DrawCircle</summary>
+            <seealso cref="T:DrawingShapesGPL.Main" />
+            <seealso cref="T:DrawingShapesGPL.IDrawShape" />
+        </member>
+        <member name="M:DrawingShapesGPL.DrawCircle.DrawShape(System.Drawing.Graphics)">
+            <summary>Draws the shape.</summary>
+            <param name="g">The g.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawCircle.SetShapeParam(System.Int32,System.Int32,System.Int32)">
+            <summary>Sets the shape parameter.</summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hypoten">The hypoten.</param>
+        </member>
+        <member name="T:DrawingShapesGPL.DrawingFactory">
+            <summary>DrawingFactory Class</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawingFactory.getShape(System.String)">
+            <summary> Get the shape implementing Interface.</summary>
+            <param name="shapeType">Type of the shape.</param>
+            <returns>Shape</returns>
+        </member>
+        <member name="T:DrawingShapesGPL.DrawingShapesException">
+            <summary>Custom defined exception for DrawiingShapes</summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:DrawingShapesGPL.DrawingShapesException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:DrawingShapesGPL.DrawingShapesException"/> class.</summary>
+            <param name="msg">The error message.</param>
+        </member>
+        <member name="T:DrawingShapesGPL.DrawTriangle">
+            <summary>DrawTriangle</summary>
+            <seealso cref="T:DrawingShapesGPL.Main" />
+            <seealso cref="T:DrawingShapesGPL.IDrawShape" />
+        </member>
+        <member name="F:DrawingShapesGPL.DrawTriangle.tWidth">
+            <summary>The width of triangle.</summary>
+        </member>
+        <member name="F:DrawingShapesGPL.DrawTriangle.tHeight">
+            <summary>The height of triangle.</summary>
+        </member>
+        <member name="F:DrawingShapesGPL.DrawTriangle.tHypotenuse">
+            <summary>The hypotenuse of triangle.</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawTriangle.checkTriangleValidity">
+            <summary>Checks whether triangle exists or not.</summary>
+            <returns>True || False</returns>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawTriangle.DrawShape(System.Drawing.Graphics)">
+            <summary>Draws the Triangle shape.</summary>
+            <param name="g">The g.</param>
+            <exception cref="T:DrawingShapesGPL.DrawingShapesException">Triangle doesnt exist.</exception>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawTriangle.SetShapeParam(System.Int32,System.Int32,System.Int32)">
+            <summary>Sets the parameters of the triangle.</summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hypotn">The hypotn.</param>
+        </member>
+        <member name="T:DrawingShapesGPL.IDrawShape">
+            <summary>Defining the interface</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.IDrawShape.DrawShape(System.Drawing.Graphics)">
+            <summary>Draws the shape.</summary>
+            <param name="g">The g.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.IDrawShape.SetShapeParam(System.Int32,System.Int32,System.Int32)">
+            <summary>Sets the shape parameter.</summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hypotenuse">The hypotenuse.</param>
+        </member>
+        <member name="T:DrawingShapesGPL.Main">
+            <summary>Main Class:</summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:DrawingShapesGPL.Main.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:DrawingShapesGPL.Main"/> class.</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.Main_Load(System.Object,System.EventArgs)">
+            <summary>Handles the Load event of the Main Form.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.btn_Run_Click(System.Object,System.EventArgs)">
+            <summary>Handles the Click event of the btn_Run control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.panelDraw_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>Handles the MouseUp event of the panelDraw control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.panelDraw_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>Handles the MouseDown event of the panelDraw control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.panelDraw_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>Handles the MouseMove event of the panelDraw control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.btn_ClearAll_Click(System.Object,System.EventArgs)">
+            <summary>Handles the Click event of the btn_ClearAll control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.btn_ClearPanel_Click(System.Object,System.EventArgs)">
+            <summary>Handles the Click event of the btn_ClearPanel control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:DrawingShapesGPL.Main.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.Main.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DrawingShapesGPL.DrawRectangle">
+            <summary>DrawRectangle</summary>
+            <seealso cref="T:DrawingShapesGPL.Main" />
+            <seealso cref="T:DrawingShapesGPL.IDrawShape" />
+        </member>
+        <member name="F:DrawingShapesGPL.DrawRectangle.width">
+            <summary>The width</summary>
+        </member>
+        <member name="F:DrawingShapesGPL.DrawRectangle.height">
+            <summary>The height</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawRectangle.DrawShape(System.Drawing.Graphics)">
+            <summary>Draws the shape.</summary>
+            <param name="g">The g.</param>
+        </member>
+        <member name="M:DrawingShapesGPL.DrawRectangle.SetShapeParam(System.Int32,System.Int32,System.Int32)">
+            <summary>Sets the shape parameter.</summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hypotenuse">The hypotenuse.</param>
+        </member>
+        <member name="T:DrawingShapesGPL.Program">
+            <summary>Main entry class of the application.</summary>
+        </member>
+        <member name="M:DrawingShapesGPL.Program.Main">
+            <summary>The main entry point for the application.</summary>
+        </member>
+        <member name="T:DrawingShapesGPL.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:DrawingShapesGPL.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:DrawingShapesGPL.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:DrawingShapesGPL.Properties.Resources.pencil1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

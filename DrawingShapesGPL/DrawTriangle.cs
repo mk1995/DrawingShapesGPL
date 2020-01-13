@@ -10,10 +10,10 @@ namespace DrawingShapesGPL
     {
         /// <summary>The width of triangle.</summary>
         private int tWidth;
-
+        
         /// <summary>The height of triangle.</summary>
         private int tHeight;
-
+        
         /// <summary>The hypotenuse of triangle.</summary>
         private int tHypotenuse;
 
@@ -27,13 +27,13 @@ namespace DrawingShapesGPL
             else
                 return true;
         }
-
+        
         /// <summary>Draws the Triangle shape.</summary>
         /// <param name="g">The g.</param>
         /// <exception cref="DrawingShapesGPL.DrawingShapesException">Triangle doesnt exist.</exception>
         public void DrawShape(Graphics g)
         {
-            if (checkTriangleValidity())
+            if(checkTriangleValidity())
             {
                 Pen myPen = new Pen(Color.Black, 4);
                 Point[] pnt = new Point[3];
@@ -52,9 +52,9 @@ namespace DrawingShapesGPL
             {
                 throw new DrawingShapesException("Triangle doesnt exist.");
             }
-
+            
         }
-
+        
         /// <summary>Sets the parameters of the triangle.</summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>

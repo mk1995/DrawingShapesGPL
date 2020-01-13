@@ -52,17 +52,19 @@ namespace DrawingShapesGPL
                     }
                     catch (Exception exc)
                     {
-                        textBoxResultOutput.Text += "\r\n" + exc.Message;
+                        textBoxResultOutput.Text += "\r\n" + exc.ToString();
                     }
                 }
                 else
                 {
+                    textBoxResultOutput.ForeColor = Color.Red;
                     textBoxResultOutput.Text += "\r\nOOps! something went wrong try again.";
                 }
 
             }
             else
             {
+                textBoxResultOutput.ForeColor = Color.Red;
                 textBoxResultOutput.Text += "Command field must not be empty.";
             }
             //textBoxResultOutput.Text += mouseX + " " + mouseY;

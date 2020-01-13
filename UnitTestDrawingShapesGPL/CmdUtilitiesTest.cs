@@ -1,11 +1,10 @@
 ﻿using DrawingShapesGPL;
-using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestDrawingShapesGPL
 {
     [TestClass]
-    public class CmdUtilitiesTest
+    public class CmdUtilitiesTest : Main
     {
         [TestMethod]
         public void GetStartLineNumber()

@@ -20,8 +20,6 @@ namespace DrawingShapesGPL
         public int width = 0;
         public int height = 0;
         public int counter = 0;
-        public int hypotenuse = 0;
-
         /// <summary>The loop number</summary>
         int loopNumber = 0;
         /// <summary>The shape factory</summary>
@@ -78,7 +76,6 @@ namespace DrawingShapesGPL
             Boolean hasEquals = singleLineCommand.Contains("=");
             Boolean hasRepeat = singleLineCommand.Contains("+");
             singleLineCommand = Regex.Replace(singleLineCommand, @"\s+", " ");
-            //set the value of  defined variables
             if (hasEquals)
             {
                 string[] words = singleLineCommand.Split(' ');
@@ -161,10 +158,6 @@ namespace DrawingShapesGPL
                     else if (words2[0].ToLower().Equals("counter"))
                     {
                         counter = int.Parse(words2[1]);
-                    }
-                    else if (words2[0].ToLower().Equals("hypotenuse"))
-                    {
-                        hypotenuse = int.Parse(words2[1]);
                     }
                 }
             }

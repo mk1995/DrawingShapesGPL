@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A71CF5FD-A3A9-40B9-9037-98D1DD88DA8E}</ProjectGuid>
+    <ProjectGuid>{81737ECA-7A2C-485A-8CC6-D787B6941C0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UnitTestDrawingShapesGPL</RootNamespace>
@@ -47,15 +47,24 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CmdUtilitiesTest.cs" />
     <Compile Include="CmdValidationTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TriangleSideValidityTest.cs" />
+    <Compile Include="CmdUtilitiesTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DrawingShapesGPL\DrawingShapesGPL.csproj">
+      <Project>{40a498f9-5923-4917-b97c-9fee2e171651}</Project>
+      <Name>DrawingShapesGPL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ namespace UnitTestDrawingShapesGPL
         public void checkTriangleValidity()
         {
             DrawTriangle dt = new DrawTriangle();
-            dt.SetShapeParam(1, 2, 3);
+            dt.SetShapeParam(1,2,3);
             bool expectedResult = false;
             bool actualResult = dt.checkTriangleValidity();
             Assert.AreEqual(expectedResult, actualResult);
